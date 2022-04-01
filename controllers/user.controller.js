@@ -67,6 +67,11 @@ const registerView = (req, res) => {
   res.render("pages/register");
 };
 
+const userinfo = (req, res) => {
+  let user = req.user;
+  res.render("pages/info", { user: user });
+};
+
 module.exports = {
   createUser,
   logIn,
@@ -74,4 +79,5 @@ module.exports = {
   getUser,
   loginView,
   registerView,
+  userinfo,
 };

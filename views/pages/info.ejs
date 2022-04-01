@@ -7,7 +7,17 @@
   <body>
     <main>
       <div class="container">
-        <div class="center-box">UserINFO</div>
+        <div class="center-box">
+          <div class="card" style="width: 18rem">
+            <div class="card-body">
+              <h5 class="card-title"><%- user.name%></h5>
+              <h6 class="card-subtitle mb-2 text-muted"><%- user.email%></h6>
+              <h6><small>GENDER >>> <%- user.gender%></small></h6>
+              <h6><small>AGE >>> <%- user.age%></small></h6>
+              <p class="card-text">Hey I am the user Who is logged in</p>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
 

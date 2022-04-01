@@ -4,7 +4,7 @@ const db = require("../models");
 const { userService } = require("../services/index");
 
 verifyToken = async (req, res, next) => {
-  let token = req.headers["access_token"];
+  let token = req.headers["access_token"] || req.query.token;
   if (!token) {
     return res.status(403).send({ message: "No token provided!" });
   }
@@ -23,10 +23,11 @@ verifyToken = async (req, res, next) => {
     }
 
     let USER = user.data.data;
-    res.status(200).send(USER);
+    req.user = USER;
+    // res.status(200).send(USER);
     // res.render("pages/info");
 
-    // next();
+    next();
   });
 };
 

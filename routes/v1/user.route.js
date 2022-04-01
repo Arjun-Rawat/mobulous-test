@@ -9,7 +9,7 @@ const router = express.Router();
 router.get("/register", userController.registerView);
 router.post("/register", userController.createUser);
 router.post("/login", userController.logIn);
-router.get("/userinfo", authMiddleware.verifyToken);
+router.get("/userinfo", authMiddleware.verifyToken ,userController.userinfo);
 router.get("/login", userController.loginView);
 
 module.exports = router;

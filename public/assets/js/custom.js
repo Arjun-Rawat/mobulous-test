@@ -32,7 +32,6 @@ $(() => {
       gender: {
         required: true,
       },
- 
     },
     messages: {
       name: "*Please specify your name",
@@ -155,18 +154,24 @@ $(() => {
 
   $("#userBtn").on("click", (event) => {
     event.preventDefault();
-    $.ajax({
-      url: `http://${BASE}/v1/users/userinfo`,
-      type: "GET",
-      success: function (res) {
-        console.log(res);
-      },
-      beforeSend: function (request) {
-        request.setRequestHeader("access_token", localStorage.getItem("access_token"));
-      },
-      error: function (err) {
-        alert(err.responseJSON.message);
-      },
-    });
+    if (!localStorage.getItem("access_token")) {
+      alert("please login first");
+      return;
+    }
+    window.location.href = `http://${BASE}/v1/users/userinfo?token=${localStorage.getItem("access_token")}`;
+
+    // $.ajax({
+    //   url: `http://${BASE}/v1/users/userinfo`,
+    //   type: "GET",
+    //   success: function (res) {
+    //     console.log(res);
+    //   },
+    //   beforeSend: function (request) {
+    //     request.setRequestHeader("access_token", localStorage.getItem("access_token"));
+    //   },
+    //   error: function (err) {
+    //     alert(err.responseJSON.message);
+    //   },
+    // });
   });
 });
