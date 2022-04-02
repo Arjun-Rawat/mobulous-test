@@ -24,5 +24,5 @@ const printSeq = (end) => {
   return seq;
 };
 
-let seq = printSeq(15);
+let seq = printSeq(10);
 console.log(seq);

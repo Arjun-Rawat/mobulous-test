@@ -9,8 +9,7 @@ const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.use(express.static(__dirname + '/public'));
-
+app.use(express.static(__dirname + "/public"));
 
 // parse json request body
 app.use(express.json());
@@ -33,7 +32,8 @@ app.get("/", function (req, res) {
 
 // send back a 404 error for any unknown api request
 app.use((req, res, next) => {
-  res.send({ status: httpStatus.NOT_FOUND, message: "Not found" });
+  res.render("404");
+  // res.send({ status: httpStatus.NOT_FOUND, message: "Not found" });
 });
 
 module.exports = app;
